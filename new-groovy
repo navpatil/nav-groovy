@@ -1,7 +1,7 @@
-job('example') {
+job('engine') {
   publishers {
     slackNotifier {
-      room('Dev Team A')
+      room('devops')
       notifyAborted(true)
       notifyFailure(true)
       notifyNotBuilt(true)
