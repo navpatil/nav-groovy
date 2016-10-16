@@ -1,3 +1,14 @@
+//Job DSL script
+import jenkins.model.Jenkins
+def j = Jenkins.instance
+//get the global slack configuration
+def s = j.getExtensionList('jenkins.plugins.slack.SlackNotifier$DescriptorImpl')[0]
+//use a class loader because Job DSL can only import classes from plugins which are explicit dependencies
+def slackServiceClass = s.class.classLoader.loadClass('jenkins.plugins.slack.StandardSlackService')
+//configure a new instance to notify slack using global slack settings
+def slackService = slackServiceClass.newInstance(s.teamDomain, s.token, s.room)
+//notify the channel
+slackService.publish('Life is like a box of chocolates.', 'warning')
 job('engine1') {
   wrappers {
     credentialsBinding {
