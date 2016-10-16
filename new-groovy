@@ -1,0 +1,23 @@
+job('example') {
+  publishers {
+    slackNotifier {
+      room('Dev Team A')
+      notifyAborted(true)
+      notifyFailure(true)
+      notifyNotBuilt(true)
+      notifyUnstable(true)
+      notifyBackToNormal(true)
+      notifySuccess(false)
+      notifyRepeatedFailure(false)
+      startNotification(false)
+      includeTestSummary(false)
+      includeCustomMessage(false)
+      customMessage(null)
+      buildServerUrl(null)
+      sendAs(null)
+      commitInfoChoice('NONE')
+      teamDomain(null)
+      authToken(null)
+    }
+  }
+}
