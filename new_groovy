@@ -1,7 +1,7 @@
-job('engine') {
+job('engine1') {
   publishers {
     slackNotifier {
-      room('devops')
+      room('random')
       notifyAborted(true)
       notifyFailure(true)
       notifyNotBuilt(true)
